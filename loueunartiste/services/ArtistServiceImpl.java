@@ -47,15 +47,27 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
-    public void addMediumAndFormat(Long accountId,
+    public void createMediumAndFormat(Long accountId,
 	    MediumAndFormatCreate inputs) {
 	Artist artistEntity = artistByAccount(accountId);
 	List<Long> mediumInputs = inputs.getArtMediumId();
 	List<Long> formatInputs = inputs.getArtFormatId();
-
 	artistEntity.setArtMedium(addMedium(mediumInputs));
 	artistEntity.setArtFormat(addFormat(formatInputs));
 	artists.save(artistEntity);
+    }
+
+    @Override
+    public void updateMediumAndFormat(Long accountId,
+	    MediumAndFormatCreate inputs) {
+	Artist artistEntity = artistByAccount(accountId);
+
+//	List<ArtMedium> mediumList = artistEntity.getArtMedium();
+//	for (ArtMedium m : mediumList) {
+//	    mediumList.remove(m);
+//	}
+//	artistEntity.getArtMedium().clear();
+//	artistEntity.getArtFormat().clear();
     }
 
     @Override

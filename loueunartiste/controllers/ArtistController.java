@@ -30,11 +30,17 @@ public class ArtistController {
 	return service.getOne(accountId);
     }
 
-    @PostMapping("/{id}/mediums-formats")
-    public void addMediumAndFormat(@PathVariable("id") Long id,
+    @PostMapping("/{id}/add-mediums-formats")
+    public void createMediumAndFormat(
 	    @RequestBody MediumAndFormatCreate inputs) {
 	Long accountId = SecurityHelper.accountId();
-	service.addMediumAndFormat(accountId, inputs);
+	service.createMediumAndFormat(accountId, inputs);
+    }
+
+    public void updateMediumAndFormat(
+	    @RequestBody MediumAndFormatCreate inputs) {
+	Long accountId = SecurityHelper.accountId();
+	service.updateMediumAndFormat(accountId, inputs);
     }
 
     @PatchMapping("/{id}/available")

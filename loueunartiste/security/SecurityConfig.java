@@ -68,15 +68,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().authorizeRequests()
 		.antMatchers(HttpMethod.POST, "/accounts/role-client", 
-			"/accounts/role-artist", "/accounts/login", "/search", "/artists/profile")
+			"/accounts/role-artist", "/accounts/login", "/search")
 		.anonymous()
-		.antMatchers(HttpMethod.POST, "/artists/mediums", 
-			"/artists/formats")
+		.antMatchers(HttpMethod.POST, "/artists/profile", "/artists/mediums-formats", 
+			"/artists/available")
 		.hasRole("ARTIST")
 		.antMatchers(HttpMethod.POST, "/search")
 		.hasRole("CLIENT")
-		.antMatchers(HttpMethod.POST, "/artists/profile")
-		.hasAnyRole("ARTIST", "CLIENT")
 		// Unauthorize any other endpoint
 		.anyRequest().fullyAuthenticated()
 		.and().oauth2ResourceServer().jwt()

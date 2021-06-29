@@ -14,6 +14,9 @@ public class ArtMedium extends AbstractEntity {
     @Column(name = "label")
     private String label;
 
+    @Column(name = "minimum_price")
+    private int minimumPrice;
+
     @ManyToMany(mappedBy = "artMedium")
     private List<Artist> artist;
 
@@ -29,6 +32,14 @@ public class ArtMedium extends AbstractEntity {
 	this.label = label;
     }
 
+    public int getMinimumPrice() {
+	return minimumPrice;
+    }
+
+    public void setMinimumPrice(int minimumPrice) {
+	this.minimumPrice = minimumPrice;
+    }
+
     public List<Artist> getArtist() {
 	return artist;
     }
@@ -39,7 +50,8 @@ public class ArtMedium extends AbstractEntity {
 
     @Override
     public String toString() {
-	return "ArtMedium [label=" + label + "]";
+	return "ArtMedium [label=" + label + ", minimumPrice=" + minimumPrice
+		+ ", artist=" + artist + "]";
     }
 
 }
