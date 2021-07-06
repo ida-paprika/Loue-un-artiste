@@ -11,7 +11,7 @@ public class AccountLogin {
 
     @NotEmpty
     @NotBlank
-    private String password; // will be crypted
+    private String password;
 
     public AccountLogin() {
 	//

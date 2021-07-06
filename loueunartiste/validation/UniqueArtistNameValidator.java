@@ -11,7 +11,6 @@ public class UniqueArtistNameValidator
     private final ArtistRepository artists;
 
     public UniqueArtistNameValidator(ArtistRepository artists) {
-	super();
 	this.artists = artists;
     }
 

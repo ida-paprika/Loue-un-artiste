@@ -13,14 +13,14 @@ public class AccountCreate {
     @NotEmpty
     @NotBlank
     @Size(max = 50)
-    @Email // Make a custom email validation
+    @Email
     @UniqueUsername
     private String username;
 
     @NotEmpty
     @NotBlank
     @Size(min = 8, max = 12)
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$", message = "doit contenir au moins une minuscule, une majuscule et un chiffre")
     private String password;
 
     public AccountCreate() {
@@ -46,7 +46,7 @@ public class AccountCreate {
     @Override
     public String toString() {
 	return "New Account--------\n[ username = " + username
-		+ "]\n[ password = " + password + " ]\n--------";
+		+ "]\n[ password = PROTECTED ]\n--------";
     }
 
 }

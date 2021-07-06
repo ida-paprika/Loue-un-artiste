@@ -3,8 +3,6 @@ package fr.formation.loueunartiste.services;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +52,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void create(@Valid ArtistCreate inputs) {
+    public void create(ArtistCreate inputs) {
 	Artist artistEntity = new Artist();
 	String username = inputs.getUsername();
 	String raw = inputs.getPassword();

@@ -11,6 +11,7 @@ public class ArtistView {
     private List<String> artFormat;
 
     public ArtistView() {
+	//
     }
 
     public String getArtistName() {

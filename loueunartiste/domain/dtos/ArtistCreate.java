@@ -25,15 +25,15 @@ public class ArtistCreate {
     @NotEmpty
     @NotBlank
     @Size(max = 50)
-    @Email // Make a custom email validation
+    @Email
     @UniqueUsername
-    private String username;// insert into users + socialInfos "email"
+    private String username;
 
     @NotEmpty
     @NotBlank
     @Size(min = 8, max = 12)
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$")
-    private String password;// insert into users
+    private String password;
 
     public ArtistCreate() {
 	//

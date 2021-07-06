@@ -1,7 +1,10 @@
 package fr.formation.loueunartiste.domain.dtos;
 
+import fr.formation.loueunartiste.validation.MediumAndFormatIsSet;
+
 public class ArtistAvailableUpdate {
 
+    @MediumAndFormatIsSet
     private boolean available;
 
     public ArtistAvailableUpdate() {

@@ -40,7 +40,6 @@ public class ArtistServiceImpl implements ArtistService {
 	artistDto.setArtistName(artistEntity.getArtistName());
 	artistDto.setPortfolioUrl(artistEntity.getPortfolioUrl());
 	artistDto.setAvailable(artistEntity.isAvailable());
-
 	artistDto.setArtMedium(mediumLabelList(artistEntity.getArtMedium()));
 	artistDto.setArtFormat(formatLabelList(artistEntity.getArtFormat()));
 	return artistDto;
@@ -61,23 +60,18 @@ public class ArtistServiceImpl implements ArtistService {
     public void updateMediumAndFormat(Long accountId,
 	    MediumAndFormatCreate inputs) {
 	Artist artistEntity = artistByAccount(accountId);
-
-//	List<ArtMedium> mediumList = artistEntity.getArtMedium();
-//	for (ArtMedium m : mediumList) {
-//	    mediumList.remove(m);
-//	}
-//	artistEntity.getArtMedium().clear();
-//	artistEntity.getArtFormat().clear();
+	artistEntity.getArtMedium().clear();
+	artistEntity.getArtFormat().clear();
+	artistEntity.setArtMedium(addMedium(inputs.getArtMediumId()));
+	artistEntity.setArtFormat(addFormat(inputs.getArtFormatId()));
+	artists.save(artistEntity);
     }
 
     @Override
     public void updateAvailable(Long accountId, ArtistAvailableUpdate input) {
 	Artist artistEntity = artistByAccount(accountId);
-	if (artistEntity.getArtMedium().size() >= 1
-		&& artistEntity.getArtFormat().size() >= 1) {
-	    artistEntity.setAvailable(input.isAvailable());
-	    artists.save(artistEntity);
-	}
+	artistEntity.setAvailable(input.isAvailable());
+	artists.save(artistEntity);
     }
 
     private Artist artistByAccount(Long accountId) {

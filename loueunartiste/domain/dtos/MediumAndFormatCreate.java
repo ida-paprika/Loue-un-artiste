@@ -13,6 +13,7 @@ public class MediumAndFormatCreate {
     private List<Long> artFormatId;
 
     public MediumAndFormatCreate() {
+	//
     }
 
     public List<Long> getArtMediumId() {

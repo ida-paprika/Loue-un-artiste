@@ -1,5 +1,7 @@
 package fr.formation.loueunartiste.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,18 +27,19 @@ public class ArtistController {
     }
 
     @GetMapping("/{id}/profile")
-    public ArtistView getOne(@PathVariable Long id) {
+    public ArtistView getOne() {
 	Long accountId = SecurityHelper.accountId();
 	return service.getOne(accountId);
     }
 
-    @PostMapping("/{id}/add-mediums-formats")
+    @PostMapping("/{id}/mediums-formats")
     public void createMediumAndFormat(
 	    @RequestBody MediumAndFormatCreate inputs) {
 	Long accountId = SecurityHelper.accountId();
 	service.createMediumAndFormat(accountId, inputs);
     }
 
+    @PatchMapping("/{id}/mediums-formats")
     public void updateMediumAndFormat(
 	    @RequestBody MediumAndFormatCreate inputs) {
 	Long accountId = SecurityHelper.accountId();
@@ -44,8 +47,8 @@ public class ArtistController {
     }
 
     @PatchMapping("/{id}/available")
-    public void updateAvailable(@PathVariable("id") Long id,
-	    @RequestBody ArtistAvailableUpdate input) {
+    public void updateAvailable(
+	    @Valid @RequestBody ArtistAvailableUpdate input) {
 	Long accountId = SecurityHelper.accountId();
 	service.updateAvailable(accountId, input);
     }

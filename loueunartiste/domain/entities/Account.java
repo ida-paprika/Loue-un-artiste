@@ -74,9 +74,10 @@ public class Account extends AbstractEntity {
 
     @Override
     public String toString() {
-	return "Account ----- \n[username= " + username + " ] [password= "
-		+ password + " ]\n[registrationDate= " + registrationDate
-		+ " ] [enabled= " + enabled + " ]\n[role= " + role + " ] -----";
+	return "Account ----- \n[username= " + username
+		+ " ] [password=PROTECTED]\n[registrationDate= "
+		+ registrationDate + " ] [enabled= " + enabled + " ]\n[role= "
+		+ role + " ] -----";
     }
 
 }
